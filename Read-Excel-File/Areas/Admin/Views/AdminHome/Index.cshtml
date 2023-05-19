@@ -1,1 +1,17 @@
-﻿<h1>Admin</h1>
+﻿<h2>Excel Dosyası Yükleme</h2>
+
+@using (Html.BeginForm("ImportExcel", "AdminHome", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        <label for="file">Excel Dosyası Seçin:</label>
+        <input type="file" name="file" id="file" />
+    </div>
+    <div>
+        <input type="submit" value="Yükle" />
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+    <div>@ViewBag.Message</div>
+}
