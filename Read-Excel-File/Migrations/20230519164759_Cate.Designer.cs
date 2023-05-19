@@ -11,8 +11,8 @@ using ReadExcel.Database;
 namespace Read_Excel_File.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230519001516_CategorAndModel")]
-    partial class CategorAndModel
+    [Migration("20230519164759_Cate")]
+    partial class Cate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -5,7 +5,7 @@
 namespace Read_Excel_File.Migrations
 {
     /// <inheritdoc />
-    public partial class CategorAndModel : Migration
+    public partial class Cate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
