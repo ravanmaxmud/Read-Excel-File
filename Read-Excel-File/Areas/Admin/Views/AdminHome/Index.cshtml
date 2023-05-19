@@ -1,7 +1,44 @@
-﻿<h2>Excel Dosyası Yükleme</h2>
+﻿@using Read_Excel_File.Database.Models
+@model List<Category>
+
+<h2>Excel Dosyası Yükleme</h2>
+
 
 @using (Html.BeginForm("ImportExcel", "AdminHome", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <input type="file" name="excelFile" />
     <button type="submit">Excel Yükle</button>
 }
+
+<table class="mt-5 table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">CategoryId</th>
+            <th scope="col">Category</th>
+            <th scope="col">Model</th>
+            <th scope="col">Count</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            foreach (var madel in item.Models)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Name</td>
+                    <td>@madel.Name</td>
+                    <td>@madel.ModelCount</td>
+                    <td>
+                        <form method="POST" asp-route="admin-data-delete" asp-route-id="@madel.Id" id="slider-form-@madel.Id"></form>
+                        <button class="border-0" type="submit" form="slider-form-@madel.Id">
+                            X
+                        </button>
+                    </td>
+                </tr>
+            }
+
+        }
+    </tbody>
+</table>

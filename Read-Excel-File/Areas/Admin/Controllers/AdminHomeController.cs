@@ -21,11 +21,15 @@ namespace Read_Excel_File.Areas.Admin.Controllers
             _dataContext = dataContext;
         }
 
-        [HttpGet("index")]
-        public IActionResult Index()
+        [HttpGet("index",Name ="admin-home-index")]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var model = await _dataContext.Categories.Include(m=> m.Models).ToListAsync();
+
+            return View(model);
         }
+
+
 
         [HttpPost]
         public async Task<IActionResult> ImportExcel(IFormFile excelFile)
@@ -100,7 +104,21 @@ namespace Read_Excel_File.Areas.Admin.Controllers
                 await _dataContext.SaveChangesAsync();
             }
 
-            return Ok("Excel file uploaded and saved to the database successfully.");
+            //return Ok("Excel file uploaded and saved to the database successfully.");
+            return RedirectToRoute("admin-home-index");
+        }
+
+        [HttpPost("delete/{id}", Name = "admin-data-delete")]
+        public async Task<IActionResult> DeleteAsync([FromRoute] int id)
+        {
+            var model = await _dataContext.Models.FirstOrDefaultAsync(p => p.Id == id);
+            if (model is null)
+            {
+                return NotFound();
+            }
+            _dataContext.Models.Remove(model);
+            await _dataContext.SaveChangesAsync();
+            return RedirectToRoute("admin-home-index");
         }
 
     }
