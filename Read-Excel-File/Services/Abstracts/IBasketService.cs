@@ -1,13 +1,12 @@
-﻿//using FoodCorner.Areas.Client.ViewModels.Basket;
-//using FoodCorner.Areas.Client.ViewModels.Home.Modal;
-//using FoodCorner.Database.Models;
-//using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Read_Excel_File.Areas.Client.ViewModels.Basket;
+using Read_Excel_File.Database.Models;
 
-//namespace Read_Excel_File.Services.Abstracts
-//{
-//    public interface IBasketService
-//    {
-//        Task<List<BasketCookieViewModel>> AddBasketProductAsync(Product product, ModalViewModel model);
+namespace Read_Excel_File.Services.Abstracts
+{
+    public interface IBasketService
+    {
+        Task<List<BasketViewModel>> AddBasketProductAsync(Model model,BasketViewModel basketViewModel);
 
-//    }
-//}
+    }
+}

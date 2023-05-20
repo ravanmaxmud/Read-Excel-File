@@ -1,6 +1,6 @@
-﻿using FoodCorner.Database.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Read_Excel_File.Database.Models;
 
 namespace Read_Excel_File.Database.Configuration
 {

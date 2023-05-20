@@ -1,6 +1,6 @@
-﻿using FoodCorner.Database.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Read_Excel_File.Database.Models;
 
 namespace Read_Excel_File.Database.Configuration
 {
@@ -15,12 +15,6 @@ namespace Read_Excel_File.Database.Configuration
              .HasOne(bp => bp.Basket)
              .WithMany(basket => basket.BasketProducts)
              .HasForeignKey(bp => bp.BasketId);
-
-            builder
-              .HasOne(bp => bp.Product)
-              .WithMany(product => product.BasketProducts)
-              .HasForeignKey(bp => bp.ProductId);
-
         }
     }
 }

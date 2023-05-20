@@ -10,7 +10,7 @@ namespace Read_Excel_File.Infrastructure.Configurations
         {
           
             services.AddScoped<IUserService, UserService>();
-        
+            services.AddScoped<IBasketService, BasketService>();
         }
     }
 }

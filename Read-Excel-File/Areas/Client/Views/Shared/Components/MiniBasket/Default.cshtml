@@ -1,0 +1,15 @@
+﻿@using Read_Excel_File.Areas.Client.ViewModels.Basket;
+@model List<BasketViewModel>
+    
+<ul class="header-cart-wrapitem w-full">
+    @foreach (var item in Model)
+    {
+        <li class="header-cart-item d-flex justify-content-between align-items-center flex-w flex-t m-b-12">
+
+            <div class="header-cart-item-txt p-t-8">
+                  <h1>@item.Name</h1>
+                  <h3>@item.Quantity</h3>
+            </div>
+        </li>
+    }
+</ul>
