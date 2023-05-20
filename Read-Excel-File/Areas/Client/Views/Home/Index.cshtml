@@ -1,1 +1,28 @@
-﻿<h1>Salam</h1>
+﻿@using Read_Excel_File.Areas.Client.ViewCompanents;
+@using Read_Excel_File.Areas.Client.ViewModels.Home;
+@model IndexViewModel
+
+
+<div class="container-fluid">
+    <div class="dropdown show mt-5 mb-5">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categories
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item select-catagory" asp-route="client-home-sort">All Models</a>
+            @foreach (var item in Model.Categories)
+            {
+                <a class="dropdown-item select-catagory" asp-route="client-home-sort" asp-route-categoryId="@item.Id">@item.Name</a>
+            }
+
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between flex-wrap shopPageProduct">
+
+
+        @await Component.InvokeAsync(nameof(SortModel),new {categoryId = ViewBag.CategoryId })
+    </div>
+</div>
+
