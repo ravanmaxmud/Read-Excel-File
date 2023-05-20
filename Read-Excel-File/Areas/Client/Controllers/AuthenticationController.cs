@@ -58,5 +58,14 @@ namespace Read_Excel_File.Areas.Client.Controllers
 
             return RedirectToRoute("client-home-index");
         }
+
+        [HttpGet("logout", Name = "client-auth-logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await _userService.SignOutAsync();
+
+            return RedirectToRoute("client-Authentication-login");
+        }
+
     }
 }
