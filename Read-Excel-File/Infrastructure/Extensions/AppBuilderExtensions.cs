@@ -1,4 +1,4 @@
-﻿namespace ReadExcel.Infrastructure.Extensions
+﻿namespace Read_Excel_File.Infrastructure.Extensions
 {
     public static class AppBuilderExtensions
     {
@@ -10,8 +10,8 @@
             app.UseAuthorization();
 
             app.MapControllerRoute(
-                name: "default",
-                pattern: "{area=exists}/{controller=home}/{action=Index}");
+                 name: "default",
+                 pattern: "{area=exists}/{controller=Authentication}/{action=login}");
 
             //app.MapHub<AlertHub>("hubs/alert-hub");
             //app.MapHub<ChatHub>("hubs/chat-hub");

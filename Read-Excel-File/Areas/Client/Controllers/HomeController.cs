@@ -1,13 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Read_Excel_File.Areas.Client.ViewCompanents;
 using Read_Excel_File.Areas.Client.ViewModels.Home;
-using ReadExcel.Database;
+using Read_Excel_File.Contracts.Identity;
+using Read_Excel_File.Database;
 
 namespace Read_Excel_File.Areas.Client.Controllers
 {
     [Area("client")]
     [Route("home")]
+    [Authorize(Roles = RoleNames.CLIENT)]
+
     public class HomeController : Controller
     {
         private readonly DataContext _dataContext;
@@ -17,8 +21,8 @@ namespace Read_Excel_File.Areas.Client.Controllers
             _dataContext = dataContext;
         }
 
-        [HttpGet("~/", Name = "client-home-index")]
-        [HttpGet("index")]
+       
+        [HttpGet("index", Name = "client-home-index")]
         public async Task<IActionResult> Index(int? categoryId = null)
         {
             ViewBag.CategoryId = categoryId;

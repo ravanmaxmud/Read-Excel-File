@@ -1,4 +1,4 @@
-﻿namespace ReadExcel.Infrastructure.Configurations
+﻿namespace Read_Excel_File.Infrastructure.Configurations
 {
     public static class MvcConfigurations
     {

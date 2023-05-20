@@ -1,7 +1,7 @@
-﻿using ReadExcel.Database;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Read_Excel_File.Database;
 
-namespace ReadExcel.Infrastructure.Configurations
+namespace Read_Excel_File.Infrastructure.Configurations
 {
     public static class DatabaseConfigurations
     {

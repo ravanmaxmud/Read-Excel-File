@@ -5,13 +5,17 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using Microsoft.AspNetCore.Http;
 using Read_Excel_File.Database.Models;
-using ReadExcel.Database;
 using Microsoft.EntityFrameworkCore;
+using Read_Excel_File.Database;
+using Microsoft.AspNetCore.Authorization;
+using Read_Excel_File.Contracts.Identity;
 
 namespace Read_Excel_File.Areas.Admin.Controllers
 {
     [Area("admin")]
     [Route("admin/home")]
+    [Authorize(Roles = RoleNames.ADMIN)]
+
     public class AdminHomeController : Controller
     {
         private readonly DataContext _dataContext;

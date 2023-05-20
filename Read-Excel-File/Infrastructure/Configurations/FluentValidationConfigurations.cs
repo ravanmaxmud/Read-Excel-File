@@ -1,9 +1,7 @@
-﻿using ReadExcel.Database;
-using FluentValidation.AspNetCore;
+﻿using FluentValidation.AspNetCore;
 using FluentValidation;
-using Microsoft.EntityFrameworkCore;
 
-namespace ReadExcel.Infrastructure.Configurations
+namespace Read_Excel_File.Infrastructure.Configurations
 {
     public static class FluentValidationConfigurations
     {

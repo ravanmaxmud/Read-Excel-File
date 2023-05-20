@@ -1,7 +1,7 @@
 ﻿using FluentValidation.AspNetCore;
 using FluentValidation;
 
-namespace ReadExcel.Infrastructure.Configurations
+namespace Read_Excel_File.Infrastructure.Configurations
 {
     public static class OptionConfigurations
     {

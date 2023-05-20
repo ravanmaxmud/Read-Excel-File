@@ -4,25 +4,27 @@
 
 
 <div class="container-fluid">
-    <div class="dropdown show mt-5 mb-5">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Categories
-        </a>
+   <div style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
+        <div class="dropdown show mt-5 mb-5">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categories
+            </a>
 
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item select-catagory" asp-route="client-home-sort">All Models</a>
-            @foreach (var item in Model.Categories)
-            {
-                <a class="dropdown-item select-catagory" asp-route="client-home-sort" asp-route-categoryId="@item.Id">@item.Name</a>
-            }
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item select-catagory" asp-route="client-home-sort">All Models</a>
+                @foreach (var item in Model.Categories)
+                {
+                    <a class="dropdown-item select-catagory" asp-route="client-home-sort" asp-route-categoryId="@item.Id">@item.Name</a>
+                }
 
+            </div>
         </div>
-    </div>
 
-    <div class="d-flex justify-content-between flex-wrap shopPageProduct">
+        <div class="shopPageProduct">
 
 
-        @await Component.InvokeAsync(nameof(SortModel),new {categoryId = ViewBag.CategoryId })
-    </div>
+            @await Component.InvokeAsync(nameof(SortModel),new {categoryId = ViewBag.CategoryId })
+        </div>
+   </div>
 </div>
 

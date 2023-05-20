@@ -1,0 +1,37 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Read_Excel_File.Areas.Client.ViewModels.Authentication
+@model LoginViewModel
+
+
+<div class="mt-5 mb-5 login-register-area section-space-y-axis-100">
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="col-lg-6">
+                <form method="Post" asp-route="client-auth-login">
+                    <div class="login-form">
+                        <h4 class="login-title">Login</h4>
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label>Email Address*</label>
+                                <input asp-for="Email" type="email" placeholder="Email Address" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-12">
+                                <label>Password</label>
+                                <input asp-for="Password" type="password" placeholder="Password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                         
+                            <div class="col-lg-12 pt-5">
+                                <button class="btn btn-custom-size lg-size btn-pronia-primary">
+                                    Login
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

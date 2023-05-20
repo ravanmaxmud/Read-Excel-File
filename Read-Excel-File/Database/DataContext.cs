@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Read_Excel_File.Database.Models;
-using ReadExcel.Extensions;
+using Read_Excel_File.Extensions;
 
-namespace ReadExcel.Database
+namespace Read_Excel_File.Database
 {
     public class DataContext : DbContext
     {
@@ -14,7 +14,10 @@ namespace ReadExcel.Database
         public DbSet<Category> Categories { get; set; }
         public DbSet<Model> Models { get; set; }
 
-
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<BasketProduct> BasketProducts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

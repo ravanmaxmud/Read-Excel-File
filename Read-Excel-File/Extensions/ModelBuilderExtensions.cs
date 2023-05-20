@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace ReadExcel.Extensions
+namespace Read_Excel_File.Extensions
 {
     public static class ModelBuilderExtensions
     {

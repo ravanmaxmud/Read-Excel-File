@@ -1,24 +1,21 @@
-﻿using FluentValidation;
-using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Text.Json.Serialization;
-using ReadExcel.Infrastructure.Configurations;
+using Read_Excel_File.Infrastructure.Configurations;
 
-namespace ReadExcel.Infrastructure.Extensions
+namespace Read_Excel_File.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {
         public static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
 
-            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(o =>
-            //{
-            //    o.Cookie.Name = "Identity";
-            //    o.ExpireTimeSpan = TimeSpan.FromMinutes(20);
-            //    o.LoginPath = "/authentication/login";
-            //    o.AccessDeniedPath = "/admin/auth/login";
-            //});
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(o =>
+            {
+                o.Cookie.Name = "Identity";
+                o.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+                o.LoginPath = "/authentication/login";
+                o.AccessDeniedPath = "/admin/auth/login";
+            });
 
             services.AddHttpContextAccessor();
 
@@ -43,7 +40,7 @@ namespace ReadExcel.Infrastructure.Extensions
 
             services.ConfigureFluentValidatios(configuration);
 
-            //services.RegisterCustomServices(configuration);
+            services.RegisterCustomServices(configuration);
         }
     }
 }
