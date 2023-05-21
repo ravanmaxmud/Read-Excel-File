@@ -43,7 +43,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script asp-append-version="true">
 
-        $(document).on("change", '.select-catagory', function(e) {
+        $(document).on("change", '.select-catagory', function (e) {
             e.preventDefault();
             let aHref = e.target.previousElementSibling.href;
             let Id = e.target.value;
@@ -59,11 +59,11 @@
                         categoryId: Id
                     },
 
-                    success: function(response) {
+                    success: function (response) {
                         $('.shopPageProduct').html(response);
 
                     },
-                    error: function(err) {
+                    error: function (err) {
                         $(".product-details-modal").html(err.responseText);
 
                     }
@@ -72,89 +72,120 @@
 
         })
 
-        $(document).on("click", '.btnAdd', function(e) {
+        $(document).on("click", '.btnAdd', function (e) {
             e.preventDefault();
-            const aHref = document.getElementById("home-sort");
+            const aHref = document.getElementById("home-sort").href;
             var Id = document.getElementById("CategoryIdSelect").value;
             console.log(aHref);
             console.log(Id);
 
-            var quantity = e.target.previousElementSibling.value;
 
-     
-            var selectedElement =e.target.previousElementSibling.previousElementSibling.previousElementSibling;
+            console.log(aHref)
+            var Quantity = e.target.previousElementSibling.value;
+
+
+            var selectedElement = e.target.previousElementSibling.previousElementSibling.previousElementSibling;
             var selectedValue = selectedElement.value;
-            var selectedText = selectedElement.options[selectedElement.selectedIndex].text;
-            console.log(selectedText);
+            var Name = selectedElement.options[selectedElement.selectedIndex].text;
+            //console.log(selectedText);
             //var selectedName = selectedValue.text();
 
 
-            //$.ajax(
-            //    {
-            //        type: "GET",
-            //        url: aHref,
-            //        data: {
-            //            categoryId: Id
-            //        },
-
-            //        success: function(response) {
-            //            e.target.disabled = true;
-            //            document.querySelector(".select-catagory").disabled = true;
-            //            $('.selectDiv').last().append(response);
-
-            //        },
-            //        error: function(err) {
-            //            $(".product-details-modal").html(err.responseText);
-
-            //        }
-
-            //    });
-
-        })
-
-        $(document).on("click", ".add-product-to-basket-single-btn", function(e) {
-            e.preventDefault();
-
-            document.getElementById('toaster').style.opacity = '1'
-            setTimeout(() => {
-                document.getElementById('toaster').style.opacity = '0'
-            }, 1000);
-            let aHref = e.target.href;
-
-            let quantity = e.target.parentElement.children[1].children[1];
-            let Quantity = quantity.value;
-            console.log(Quantity)
+            var addUrl = e.target.href;
+            console.log(addUrl)
 
             $.ajax(
                 {
                     type: "GET",
-                    url: aHref,
+                    url: addUrl,
                     data: {
+                        Name: Name,
                         Quantity: Quantity
                     },
-                    success: function(response) {
+                    success: function (response) {
 
+                        document.getElementById('toaster').style.opacity = '1'
+                        setTimeout(() => {
+                            document.getElementById('toaster').style.opacity = '0'
+                        }, 1000);
                         $('.cart-block').html(response);
-                        console.log("Super")
+                       
+                        $.ajax(
+                            {
+                                type: "GET",
+                                url: aHref,
+                                data: {
+                                    categoryId: Id,
+                                },
+
+                                success: function (response) {
+                                    e.target.style.pointerEvents = "none";;
+                                    document.querySelector(".select-catagory").disabled = true;
+                                    $('.selectDiv').last().append(response);
+                                },
+                                error: function (err) {
+                                    $(".product-details-modal").html(err.responseText);
+
+                                }
+
+                            });
 
 
                     },
-                    error: function(err) {
+                    error: function (err) {
                         $(".product-details-modal").html(err.responseText);
-
+                        alert("Fail")
                     }
 
                 });
 
+          
 
-            //fetch(e.target.href, {
-            //    method:"POST"
-            //})
-            //    .then(response => response.text())
-            //    .then(data => {
-            //        $('.cart-block').html(data);
-            //    })
         })
+
+                //$(document).on("click", ".add-product-to-basket-single-btn", function(e) {
+                //    e.preventDefault();
+
+                //    document.getElementById('toaster').style.opacity = '1'
+                //    setTimeout(() => {
+                //        document.getElementById('toaster').style.opacity = '0'
+                //    }, 1000);
+                //    let aHref = e.target.href;
+
+                //    let quantity = e.target.parentElement.children[1].children[1];
+                //    let Quantity = quantity.value;
+                //    console.log(Quantity)
+
+                //    $.ajax(
+                //        {
+                //            type: "GET",
+                //            url: aHref,
+                //            data: {
+                //                Quantity: Quantity
+                //            },
+                //            success: function(response) {
+
+                //                $('.cart-block').html(response);
+                //                console.log("Super")
+
+
+                //            },
+                //            error: function(err) {
+                //                $(".product-details-modal").html(err.responseText);
+
+                //            }
+
+                //        });
+
+
+                //    //fetch(e.target.href, {
+                //    //    method:"POST"
+                //    //})
+                //    //    .then(response => response.text())
+                //    //    .then(data => {
+                //    //        $('.cart-block').html(data);
+                //    //    })
+                //})
     </script>
 
 </body>

@@ -11,6 +11,8 @@ namespace Read_Excel_File.Infrastructure.Configurations
           
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IJiraService, JiraService>();
+            services.AddScoped<ICookieService,CookieService>();
+
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Read_Excel_File.Areas.Client.Controllers
 
             if (product.ModelCount < cookeViewModel.Quantity)
             {
-                return Ok("Olmaz");
+                return NotFound();
             }
 
             await _jiraService.PostRequestJsonFormatAsync(cookeViewModel.Name, cookeViewModel.Quantity.ToString());
